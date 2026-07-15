@@ -1,4 +1,5 @@
 "use client";
+import toast from 'react-hot-toast';
 import React, { useState } from 'react';
 import Dropzone from '../components/Dropzone';
 import styles from './page.module.css';
@@ -71,7 +72,7 @@ export default function ImageConverterPage() {
       
       canvas.toBlob((blob) => {
         if (!blob) {
-          alert('Dönüştürme başarısız oldu.');
+          toast.error('Dönüştürme başarısız oldu.');
           updateFileConfig(index, 'status', 'idle');
           return;
         }
@@ -97,7 +98,7 @@ export default function ImageConverterPage() {
     };
     
     img.onerror = () => {
-      alert("Görsel yüklenirken bir hata oluştu.");
+      toast.error("Görsel yüklenirken bir hata oluştu.");
       updateFileConfig(index, 'status', 'idle');
     }
     

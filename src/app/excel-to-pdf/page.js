@@ -1,4 +1,5 @@
 "use client";
+import toast from 'react-hot-toast';
 import React, { useState, useRef } from 'react';
 import * as XLSX from 'xlsx';
 import html2canvas from 'html2canvas';
@@ -15,7 +16,7 @@ export default function ExcelToPdfPage() {
   const handleFilesSelected = async (files) => {
     const file = files.find(f => f.name.endsWith('.xlsx') || f.name.endsWith('.csv') || f.name.endsWith('.xls'));
     if (!file) {
-      alert('Lütfen geçerli bir Excel (.xlsx, .xls) veya CSV dosyası yükleyin.');
+      toast.error('Lütfen geçerli bir Excel (.xlsx, .xls) veya CSV dosyası yükleyin.');
       return;
     }
 
@@ -65,7 +66,7 @@ export default function ExcelToPdfPage() {
 
     } catch (error) {
       console.error(error);
-      alert('Dönüştürme sırasında bir hata oluştu.');
+      toast.error('Dönüştürme sırasında bir hata oluştu.');
       setIsProcessing(false);
       setStatusText("");
     }

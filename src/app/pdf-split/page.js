@@ -1,4 +1,5 @@
 "use client";
+import toast from 'react-hot-toast';
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import Dropzone from '../components/Dropzone';
@@ -13,7 +14,7 @@ export default function PdfSplitPage() {
   const handleFilesSelected = async (files) => {
     const selected = files.find(f => f.type === 'application/pdf');
     if (!selected) {
-      alert("Lütfen geçerli bir PDF dosyası seçin.");
+      toast.error("Lütfen geçerli bir PDF dosyası seçin.");
       return;
     }
     
@@ -26,7 +27,7 @@ export default function PdfSplitPage() {
       setPageRange(`1-${pdfDoc.getPageCount()}`);
     } catch (err) {
       console.error(err);
-      alert("PDF okunamadı. Şifreli olabilir.");
+      toast.error("PDF okunamadı. Şifreli olabilir.");
     } finally {
       setIsProcessing(false);
     }
@@ -64,7 +65,7 @@ export default function PdfSplitPage() {
       
       const indicesToKeep = parseRange(pageRange, pageCount);
       if (indicesToKeep.length === 0) {
-        alert("Lütfen geçerli bir sayfa aralığı girin.");
+        toast.error("Lütfen geçerli bir sayfa aralığı girin.");
         setIsProcessing(false);
         return;
       }
@@ -87,7 +88,7 @@ export default function PdfSplitPage() {
       URL.revokeObjectURL(url);
     } catch (err) {
       console.error(err);
-      alert("Ayırma işlemi sırasında bir hata oluştu.");
+      toast.error("Ayırma işlemi sırasında bir hata oluştu.");
     } finally {
       setIsProcessing(false);
     }

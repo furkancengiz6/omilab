@@ -1,49 +1,63 @@
 import { Outfit } from "next/font/google";
-import Link from "next/link";
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import Link from 'next/link';
+import { Toaster } from 'react-hot-toast';
 import "./globals.css";
 
-const outfit = Outfit({ 
-  subsets: ["latin"],
-  variable: "--font-outfit",
-});
+const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "omiLab | Universal Converter & Editor",
-  description: "Free, high-quality, and beautiful online tools for PDF editing, file conversion, and more.",
+  title: "omiLab - Universal Converter Hub",
+  description: "İnternette bulamadığınız tüm dönüştürücüler, tamamen ücretsiz ve tarayıcınızda.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={outfit.className}>
-        {/* Navigation Bar */}
-        <nav style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '24px 5%',
-          position: 'fixed',
-          top: 0,
-          width: '100%',
-          zIndex: 100,
-          backdropFilter: 'blur(10px)',
-          borderBottom: '1px solid rgba(255,255,255,0.05)'
-        }}>
-          <Link href="/" style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.5px' }}>
-            omi<span className="gradient-text">Lab</span>
-          </Link>
-          <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-            <Link href="/tools" style={{ color: 'var(--text-secondary)', fontWeight: 500, marginRight: '10px' }}>Tüm Araçlar</Link>
-            <Link href="/cv-builder" style={{ color: 'var(--text-secondary)', fontWeight: 500, marginRight: '5px' }}>CV Oluşturucu <span style={{color:'#f59e0b', fontSize:'0.8rem'}}>✨</span></Link>
-            <button className="btn-secondary">Giriş Yap</button>
-            <button className="btn-primary">Premium'a Geç</button>
-          </div>
-        </nav>
-        
-        <main style={{ paddingTop: '80px' }}>
-          {children}
-        </main>
-      </body>
-    </html>
+    <ClerkProvider appearance={{ variables: { colorPrimary: '#8b5cf6' } }}>
+      <html lang="tr">
+        <body className={outfit.className}>
+          <Toaster 
+            position="top-right"
+            toastOptions={{
+              style: {
+                background: '#1a1a1a',
+                color: '#fff',
+                border: '1px solid rgba(255,255,255,0.1)',
+                backdropFilter: 'blur(10px)'
+              }
+            }}
+          />
+          <nav className="navbar">
+            <Link href="/" className="logo">
+              omi<span className="gradient-text">Lab</span>
+            </Link>
+            <div className="nav-links">
+              <Link href="/tools" className="nav-link">Tüm Araçlar</Link>
+              <Link href="/cv-builder" className="nav-link">CV Oluşturucu <span style={{color:'#f59e0b', fontSize:'0.8rem'}}>✨</span></Link>
+              
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className="btn-secondary">Giriş Yap</button>
+                </SignInButton>
+                <SignInButton mode="modal">
+                  <button className="btn-primary">Premium'a Geç</button>
+                </SignInButton>
+              </SignedOut>
+              
+              <SignedIn>
+                <div style={{ padding: '4px', background: 'rgba(139, 92, 246, 0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
+                  <UserButton afterSignOutUrl="/"/>
+                </div>
+              </SignedIn>
+
+            </div>
+          </nav>
+          
+          <main>
+            {children}
+          </main>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

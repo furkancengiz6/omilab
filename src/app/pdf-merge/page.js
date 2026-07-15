@@ -1,4 +1,5 @@
 "use client";
+import toast from 'react-hot-toast';
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import Dropzone from '../components/Dropzone';
@@ -49,7 +50,7 @@ export default function PdfMergePage() {
       
     } catch (error) {
       console.error("PDF birleştirme hatası:", error);
-      alert("PDF'leri birleştirirken bir hata oluştu.");
+      toast.error("PDF'leri birleştirirken bir hata oluştu.");
     } finally {
       setIsProcessing(false);
     }

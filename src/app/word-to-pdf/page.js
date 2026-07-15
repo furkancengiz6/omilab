@@ -1,4 +1,5 @@
 "use client";
+import toast from 'react-hot-toast';
 import React, { useState, useRef } from 'react';
 import * as mammoth from 'mammoth';
 import html2canvas from 'html2canvas';
@@ -15,7 +16,7 @@ export default function WordToPdfPage() {
   const handleFilesSelected = async (files) => {
     const file = files.find(f => f.name.endsWith('.docx'));
     if (!file) {
-      alert('Lütfen geçerli bir .docx dosyası yükleyin.');
+      toast.error('Lütfen geçerli bir .docx dosyası yükleyin.');
       return;
     }
 
@@ -56,7 +57,7 @@ export default function WordToPdfPage() {
 
     } catch (error) {
       console.error(error);
-      alert('Dönüştürme sırasında bir hata oluştu.');
+      toast.error('Dönüştürme sırasında bir hata oluştu.');
       setIsProcessing(false);
       setStatusText("");
     }

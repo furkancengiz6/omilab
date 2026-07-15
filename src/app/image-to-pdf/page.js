@@ -1,4 +1,5 @@
 "use client";
+import toast from 'react-hot-toast';
 import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import Dropzone from '../components/Dropzone';
@@ -73,7 +74,7 @@ export default function ImageToPdfPage() {
       pdf.save('omiLab_ImagesToPDF.pdf');
     } catch (error) {
       console.error(error);
-      alert('PDF oluşturulurken hata meydana geldi.');
+      toast.error('PDF oluşturulurken hata meydana geldi.');
     } finally {
       setIsProcessing(false);
     }

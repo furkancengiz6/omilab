@@ -1,4 +1,5 @@
 "use client";
+import toast from 'react-hot-toast';
 import React, { useState } from 'react';
 import { PDFDocument, rgb, degrees, StandardFonts } from 'pdf-lib';
 import Dropzone from '../components/Dropzone';
@@ -13,7 +14,7 @@ export default function PdfWatermarkPage() {
   const handleFilesSelected = async (files) => {
     const selected = files.find(f => f.type === 'application/pdf');
     if (!selected) {
-      alert("Lütfen geçerli bir PDF dosyası seçin.");
+      toast.error("Lütfen geçerli bir PDF dosyası seçin.");
       return;
     }
     setFile({ original: selected });
@@ -64,7 +65,7 @@ export default function PdfWatermarkPage() {
       URL.revokeObjectURL(url);
     } catch (err) {
       console.error(err);
-      alert("Filigran eklenirken bir hata oluştu. PDF şifreli olabilir.");
+      toast.error("Filigran eklenirken bir hata oluştu. PDF şifreli olabilir.");
     } finally {
       setIsProcessing(false);
     }

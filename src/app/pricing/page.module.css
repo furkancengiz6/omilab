@@ -1,0 +1,133 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pricingGrid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  padding: 40px 30px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.popularBadge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: baseline;
+}
+
+.period {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex-grow: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e2e8f0;
+}
+
+.checkIcon {
+  color: #10b981; /* Green */
+  flex-shrink: 0;
+}
+
+.buyBtn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  color: white;
+  box-shadow: 0 10px 20px -10px rgba(139, 92, 246, 0.5);
+}
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px -10px rgba(139, 92, 246, 0.7);
+}
+
+.btnSecondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}

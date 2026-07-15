@@ -1,4 +1,5 @@
 "use client";
+import toast from 'react-hot-toast';
 import React, { useState, useRef } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -46,7 +47,7 @@ export default function CvBuilderPage() {
       pdf.save('omiLab_ATS_CV.pdf');
     } catch (err) {
       console.error(err);
-      alert('PDF oluşturulurken hata meydana geldi.');
+      toast.error('PDF oluşturulurken hata meydana geldi.');
     } finally {
       setIsExporting(false);
     }
