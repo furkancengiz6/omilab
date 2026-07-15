@@ -27,15 +27,17 @@ export default function ToolsPage() {
       ]
     },
     {
-      title: "Günlük Araçlar",
+      title: "Yapay Zeka (AI) Araçları",
       tools: [
-        { name: "QR Kod Oluşturucu", path: "/qr-generator", desc: "Linkleriniz veya metinleriniz için yüksek çözünürlüklü QR.", icon: "📱" },
+        { name: "Yapay Zeka ATS CV", path: "/cv-builder", desc: "Mülakat garantili, profesyonel özgeçmiş oluşturucu.", icon: "✨", premium: true },
+        { name: "Ön Yazı Üretici (AI)", path: "/cover-letter", desc: "İş ilanına özel yapay zeka ile ön yazı yazın.", icon: "✍️", premium: true },
+        { name: "PDF Özetleyici (AI)", path: "/pdf-summary", desc: "Uzun PDF'leri yapay zekaya okutun ve özet alın.", icon: "🧠", premium: true },
       ]
     },
     {
-      title: "Premium",
+      title: "Günlük Araçlar",
       tools: [
-        { name: "Yapay Zeka ATS CV", path: "/cv-builder", desc: "Mülakat garantili, profesyonel özgeçmiş oluşturucu.", icon: "✨", premium: true },
+        { name: "QR Kod Oluşturucu", path: "/qr-generator", desc: "Linkleriniz veya metinleriniz için yüksek çözünürlüklü QR.", icon: "📱" },
       ]
     }
   ];

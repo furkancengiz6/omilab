@@ -1,0 +1,16 @@
+{
+  "name": "omiLab - Universal Hub",
+  "short_name": "omiLab",
+  "description": "Free, high-quality online tools for PDF editing, image conversion, and AI features.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#8b5cf6",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}

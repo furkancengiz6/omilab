@@ -1,5 +1,6 @@
 import { Outfit } from "next/font/google";
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { ClerkProvider, SignInButton, UserButton } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
 import Link from 'next/link';
 import { Toaster } from 'react-hot-toast';
 import "./globals.css";
@@ -20,6 +21,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const { userId } = auth();
+
   return (
     <ClerkProvider appearance={{ variables: { colorPrimary: '#8b5cf6' } }}>
       <html lang="tr">
@@ -43,21 +46,20 @@ export default function RootLayout({ children }) {
               <Link href="/tools" className="nav-link">Tüm Araçlar</Link>
               <Link href="/cv-builder" className="nav-link">CV Oluşturucu <span style={{color:'#f59e0b', fontSize:'0.8rem'}}>✨</span></Link>
               
-              <SignedOut>
-                <SignInButton mode="modal">
-                  <button className="btn-secondary">Giriş Yap</button>
-                </SignInButton>
-                <SignInButton mode="modal">
-                  <button className="btn-primary">Premium'a Geç</button>
-                </SignInButton>
-              </SignedOut>
-              
-              <SignedIn>
+              {!userId ? (
+                <>
+                  <SignInButton mode="modal">
+                    <button className="btn-secondary">Giriş Yap</button>
+                  </SignInButton>
+                  <SignInButton mode="modal">
+                    <button className="btn-primary">Premium'a Geç</button>
+                  </SignInButton>
+                </>
+              ) : (
                 <div style={{ padding: '4px', background: 'rgba(139, 92, 246, 0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
                   <UserButton afterSignOutUrl="/"/>
                 </div>
-              </SignedIn>
-
+              )}
             </div>
           </nav>
           
