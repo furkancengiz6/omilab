@@ -8,7 +8,15 @@ const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata = {
   title: "omiLab - Universal Converter Hub",
-  description: "İnternette bulamadığınız tüm dönüştürücüler, tamamen ücretsiz ve tarayıcınızda.",
+  description: "İnternette bulamadığınız tüm dönüştürücüler (PDF, Görsel, CV, Belge), tamamen ücretsiz ve tarayıcınızda. Verileriniz sunucuya yüklenmez.",
+  openGraph: {
+    title: 'omiLab - Premium Araç Kutusu',
+    description: 'Sıfır veri hırsızlığı, %100 tarayıcı içi çalışan modern dönüştürücüler.',
+    url: 'https://omilab.vercel.app',
+    siteName: 'omiLab',
+    locale: 'tr_TR',
+    type: 'website',
+  }
 };
 
 export default function RootLayout({ children }) {
